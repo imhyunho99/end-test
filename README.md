@@ -47,21 +47,34 @@
 
 ## 설치
 
-플러그인으로:
+### Claude Code
 
 ```
 /plugin marketplace add imhyunho99/end-test
 /plugin install end-test@end-test
 ```
 
-직접 심링크로 (개발용):
+### Codex
+
+```sh
+codex plugin marketplace add imhyunho99/end-test
+codex plugin add end-test@end-test
+```
+
+두 도구가 `SKILL.md` 규약을 공유하므로 스킬 본문은 한 벌이다.
+매니페스트만 두 벌 둔다 — `.claude-plugin/` 과 `.codex-plugin/` + `.agents/plugins/`.
+
+어느 쪽이든 **설치 후 세션을 새로 시작해야** 스킬이 잡힌다.
+
+### 직접 심링크 (개발용)
 
 ```sh
 git clone https://github.com/imhyunho99/end-test.git
-ln -s "$(pwd)/end-test/skills/end-test" ~/.claude/skills/end-test
+ln -s "$(pwd)/end-test/skills/end-test" ~/.claude/skills/end-test   # 또는 ~/.codex/skills/
 ```
 
-두 방법을 동시에 쓰면 스킬이 중복 등록된다. 하나만 고른다.
+플러그인 설치와 심링크를 동시에 쓰면 스킬이 중복 등록된다. 하나만 고른다.
+플러그인은 설치 시점의 사본을 캐시에 두므로, 고쳐가며 쓸 때는 심링크가 편하다.
 
 ## 테스트
 
