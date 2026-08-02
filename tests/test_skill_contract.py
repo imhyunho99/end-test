@@ -241,7 +241,9 @@ class PublicationSafetyTest(unittest.TestCase):
 
         for root in existing:
             for other in root.rglob("*.md"):
-                if SKILL_PATH.samefile(other) if other.exists() else False:
+                # 플러그인으로 설치하면 이 스킬의 사본이 ~/.claude/plugins 아래
+                # 놓인다. 자기 사본을 표절로 잡지 않도록 걸러낸다.
+                if "end-test" in other.parts:
                     continue
                 try:
                     text = other.read_text(encoding="utf-8", errors="ignore")
