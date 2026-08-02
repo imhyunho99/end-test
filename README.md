@@ -52,9 +52,24 @@ git clone https://github.com/imhyunho99/end-test.git
 ln -s "$(pwd)/end-test/skills/end-test" ~/.claude/skills/end-test
 ```
 
-## 상태
+## 테스트
 
-설계 완료, 구현 중. 설계 문서는 [docs/superpowers/specs](docs/superpowers/specs/2026-08-02-end-test-design.md).
+스킬은 에이전트가 읽는 지시서라 실행 결과를 단위 테스트할 수 없다.
+대신 지시서가 지켜야 할 계약을 검증한다 — 프론트매터, 채점 3단계,
+로그 경로, 그리고 공개 레포에 사적 식별자나 남의 문장이 섞이지 않았는지.
+
+```sh
+python3 -m unittest discover -s tests
+```
+
+표준 라이브러리만 쓴다. 설치할 것이 없다. pytest가 있으면 `pytest` 로도 돌아간다.
+
+채점이 실제로 엄정한지는 이 테스트로 알 수 없다. 그건 얕게 답해보고
+△가 나오는지 직접 확인해야 한다.
+
+## 설계 문서
+
+[docs/superpowers/specs/2026-08-02-end-test-design.md](docs/superpowers/specs/2026-08-02-end-test-design.md)
 
 ## License
 
