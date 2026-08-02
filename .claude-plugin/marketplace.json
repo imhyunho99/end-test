@@ -1,0 +1,30 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "end-test",
+  "owner": {
+    "name": "imhyunho99",
+    "url": "https://github.com/imhyunho99"
+  },
+  "metadata": {
+    "description": "작업 세션에서 다룬 내용을 문제로 되돌려 이해가 빈 곳을 찾는 스킬",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "end-test",
+      "description": "작업 세션이 끝날 때 그 세션에서 다룬 내용을 문제로 되돌려 이해가 빈 곳을 찾는다. 사용자가 /end-test 로 호출하거나 \"인지 점검\", \"오늘 작업 시험\" 을 요청할 때 사용한다.",
+      "source": "./",
+      "skills": [
+        "./skills/end-test"
+      ],
+      "category": "learning",
+      "keywords": [
+        "learning",
+        "quiz",
+        "code-comprehension",
+        "retrospective",
+        "korean"
+      ]
+    }
+  ]
+}

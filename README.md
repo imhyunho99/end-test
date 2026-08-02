@@ -47,10 +47,21 @@
 
 ## 설치
 
+플러그인으로:
+
+```
+/plugin marketplace add imhyunho99/end-test
+/plugin install end-test@end-test
+```
+
+직접 심링크로 (개발용):
+
 ```sh
 git clone https://github.com/imhyunho99/end-test.git
 ln -s "$(pwd)/end-test/skills/end-test" ~/.claude/skills/end-test
 ```
+
+두 방법을 동시에 쓰면 스킬이 중복 등록된다. 하나만 고른다.
 
 ## 테스트
 
