@@ -130,11 +130,20 @@ class GradingTest(unittest.TestCase):
             "후한 채점을 금지하는 지시가 없다",
         )
 
-    def test_partial_grade_is_not_recorded(self):
+    def test_partial_grade_is_recorded_in_its_own_section(self):
+        """△는 이 스킬이 겨냥하는 표적이다. ✗와 섞으면 목록에 묻힌다."""
         self.assertRegex(
             self.body,
-            r"△[^\n]*기록(하지|은)? ?(않|말)",
-            "△를 기록하지 않는다는 규정이 없다",
+            r"△[^\n]*(별도|따로|분리된)[^\n]*(기록|섹션)",
+            "△를 별도 섹션에 기록한다는 규정이 없다",
+        )
+
+    def test_repeated_partial_grades_are_flagged(self):
+        """같은 주제에서 △가 반복되는 것이 △ 기록의 유일한 존재 이유다."""
+        self.assertRegex(
+            self.body,
+            r"반복|되풀이|누적",
+            "△ 반복을 신호로 본다는 규정이 없다",
         )
 
 
@@ -155,6 +164,14 @@ class WrongAnswerTest(unittest.TestCase):
             self.body,
             r"각도를 바꾸|다른 상황",
             "재질문이 각도를 바꿔야 한다는 규정이 없다",
+        )
+
+    def test_requestion_is_open_ended(self):
+        """예/아니오 재질문은 찍어도 절반이 맞아 이해와 추측이 구별되지 않는다."""
+        self.assertRegex(
+            self.body,
+            r"예/아니오[^\n]*(않|말|금지)",
+            "재질문에 예/아니오를 금지하는 규정이 없다",
         )
 
     def test_requestion_does_not_consume_question_budget(self):

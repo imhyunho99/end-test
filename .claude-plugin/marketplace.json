@@ -7,7 +7,7 @@
   },
   "metadata": {
     "description": "작업 세션에서 다룬 내용을 문제로 되돌려 이해가 빈 곳을 찾는 스킬",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
