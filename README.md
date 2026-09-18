@@ -16,16 +16,16 @@ It pulls five questions from this session's conversation, asks them one at a tim
 
 Four axes:
 
-- **Design judgment** — the reasoning and the cost behind a decision you made
-- **Failures and edge cases** — where this code breaks in production
-- **CS fundamentals** — the underlying principle of a technology that came up
-- **What you waved through** — the places you approved without asking back
+- **Design judgment** - the reasoning and the cost behind a decision you made
+- **Failures and edge cases** - where this code breaks in production
+- **CS fundamentals** - the underlying principle of a technology that came up
+- **What you waved through** - the places you approved without asking back
 
 The fourth one comes first. The other three are things you know you don't know. The fourth is the part you didn't know you didn't know.
 
 ## Grading
 
-Not whether the answer is right — whether you can explain it.
+Not whether the answer is right - whether you can explain it.
 
 | | | |
 |---|---|---|
@@ -33,7 +33,7 @@ Not whether the answer is right — whether you can explain it.
 | △ | right conclusion, missing the why | name the gap, move on |
 | ✗ | wrong or a misconception | explain, then re-ask from another angle |
 
-**△ is what this tool is aiming at** — it runs, and you don't know why. A binary right/wrong scale absorbs △ into ○, which is exactly how the gap stays invisible.
+**△ is what this tool is aiming at** - it runs, and you don't know why. A binary right/wrong scale absorbs △ into ○, which is exactly how the gap stays invisible.
 
 ## Records
 
@@ -57,7 +57,7 @@ codex plugin marketplace add imhyunho99/end-test
 codex plugin add end-test@end-test
 ```
 
-Both tools share the `SKILL.md` contract, so the skill body is written once. Only the manifests are duplicated — `.claude-plugin/` and `.codex-plugin/` + `.agents/plugins/`.
+Both tools share the `SKILL.md` contract, so the skill body is written once. Only the manifests are duplicated - `.claude-plugin/` and `.codex-plugin/` + `.agents/plugins/`.
 
 Either way, **start a new session after installing** for the skill to be picked up.
 
@@ -68,11 +68,11 @@ git clone https://github.com/imhyunho99/end-test.git
 ln -s "$(pwd)/end-test/skills/end-test" ~/.claude/skills/end-test   # or ~/.codex/skills/
 ```
 
-Don't use the plugin install and the symlink at once — the skill gets registered twice. Pick one. The plugin caches a copy taken at install time, so the symlink is easier while you're editing.
+Don't use the plugin install and the symlink at once - the skill gets registered twice. Pick one. The plugin caches a copy taken at install time, so the symlink is easier while you're editing.
 
 ## Tests
 
-A skill is an instruction sheet an agent reads, so its behavior can't be unit-tested. What is tested is the contract the instruction sheet has to keep — frontmatter, the three grading levels, the log path, and whether any private identifier or borrowed prose slipped into a public repo.
+A skill is an instruction sheet an agent reads, so its behavior can't be unit-tested. What is tested is the contract the instruction sheet has to keep - frontmatter, the three grading levels, the log path, and whether any private identifier or borrowed prose slipped into a public repo.
 
 ```sh
 python3 -m unittest discover -s tests
@@ -113,10 +113,10 @@ MIT
 
 네 축에서 뽑는다.
 
-- **설계 판단** — 이번에 내린 결정의 근거와 비용
-- **장애·엣지케이스** — 이 코드가 프로덕션에서 깨진다면 어디서
-- **CS 기본기** — 등장한 기술의 근본 원리
-- **그냥 넘어간 지점** — 되묻지 않고 승인만 하고 지나간 곳
+- **설계 판단** - 이번에 내린 결정의 근거와 비용
+- **장애·엣지케이스** - 이 코드가 프로덕션에서 깨진다면 어디서
+- **CS 기본기** - 등장한 기술의 근본 원리
+- **그냥 넘어간 지점** - 되묻지 않고 승인만 하고 지나간 곳
 
 네 번째를 우선한다. 나머지 셋은 내가 모른다는 걸 아는 영역이고,
 네 번째는 모른다는 것조차 모르는 영역이다.
@@ -158,7 +158,7 @@ codex plugin add end-test@end-test
 ```
 
 두 도구가 `SKILL.md` 규약을 공유하므로 스킬 본문은 한 벌이다.
-매니페스트만 두 벌 둔다 — `.claude-plugin/` 과 `.codex-plugin/` + `.agents/plugins/`.
+매니페스트만 두 벌 둔다 - `.claude-plugin/` 과 `.codex-plugin/` + `.agents/plugins/`.
 
 어느 쪽이든 **설치 후 세션을 새로 시작해야** 스킬이 잡힌다.
 
@@ -175,7 +175,7 @@ ln -s "$(pwd)/end-test/skills/end-test" ~/.claude/skills/end-test   # 또는 ~/.
 ## 테스트
 
 스킬은 에이전트가 읽는 지시서라 실행 결과를 단위 테스트할 수 없다.
-대신 지시서가 지켜야 할 계약을 검증한다 — 프론트매터, 채점 3단계,
+대신 지시서가 지켜야 할 계약을 검증한다 - 프론트매터, 채점 3단계,
 로그 경로, 그리고 공개 레포에 사적 식별자나 남의 문장이 섞이지 않았는지.
 
 ```sh
