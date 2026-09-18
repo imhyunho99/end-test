@@ -1,5 +1,101 @@
 # end-test
 
+A Claude Code skill that turns the session you just finished back into questions.
+
+Agentic coding separates *the code working* from *you understanding it*. The output accumulates; the reasoning stays on the agent's side. `end-test` measures that gap.
+
+**English** · [한국어](#end-test-한국어)
+
+```
+/end-test
+```
+
+It pulls five questions from this session's conversation, asks them one at a time, grades the answers, and records what you couldn't explain.
+
+## Where questions come from
+
+Four axes:
+
+- **Design judgment** — the reasoning and the cost behind a decision you made
+- **Failures and edge cases** — where this code breaks in production
+- **CS fundamentals** — the underlying principle of a technology that came up
+- **What you waved through** — the places you approved without asking back
+
+The fourth one comes first. The other three are things you know you don't know. The fourth is the part you didn't know you didn't know.
+
+## Grading
+
+Not whether the answer is right — whether you can explain it.
+
+| | | |
+|---|---|---|
+| ○ | explained down to the mechanism | next question |
+| △ | right conclusion, missing the why | name the gap, move on |
+| ✗ | wrong or a misconception | explain, then re-ask from another angle |
+
+**△ is what this tool is aiming at** — it runs, and you don't know why. A binary right/wrong scale absorbs △ into ○, which is exactly how the gap stays invisible.
+
+## Records
+
+Only the ✗ items land in `~/.claude/end-test/YYYY-MM-DD.md`: the topic, the task it came from, what you didn't know, the explanation, and whether it's resolved.
+
+That path is outside the repo. The skill is public; your learning history stays local.
+
+## Install
+
+### Claude Code
+
+```
+/plugin marketplace add imhyunho99/end-test
+/plugin install end-test@end-test
+```
+
+### Codex
+
+```sh
+codex plugin marketplace add imhyunho99/end-test
+codex plugin add end-test@end-test
+```
+
+Both tools share the `SKILL.md` contract, so the skill body is written once. Only the manifests are duplicated — `.claude-plugin/` and `.codex-plugin/` + `.agents/plugins/`.
+
+Either way, **start a new session after installing** for the skill to be picked up.
+
+### Symlink (for development)
+
+```sh
+git clone https://github.com/imhyunho99/end-test.git
+ln -s "$(pwd)/end-test/skills/end-test" ~/.claude/skills/end-test   # or ~/.codex/skills/
+```
+
+Don't use the plugin install and the symlink at once — the skill gets registered twice. Pick one. The plugin caches a copy taken at install time, so the symlink is easier while you're editing.
+
+## Tests
+
+A skill is an instruction sheet an agent reads, so its behavior can't be unit-tested. What is tested is the contract the instruction sheet has to keep — frontmatter, the three grading levels, the log path, and whether any private identifier or borrowed prose slipped into a public repo.
+
+```sh
+python3 -m unittest discover -s tests
+```
+
+Standard library only. Nothing to install. `pytest` works too if you have it.
+
+These tests can't tell you whether the grading is actually strict. For that, answer shallowly on purpose and check that you get a △.
+
+## Design doc
+
+[docs/superpowers/specs/2026-08-02-end-test-design.md](docs/superpowers/specs/2026-08-02-end-test-design.md)
+
+## License
+
+MIT
+
+---
+
+# end-test (한국어)
+
+[English](#end-test) · **한국어**
+
 작업 세션이 끝날 때, 그 세션에서 다룬 내용을 문제로 되돌려주는 Claude Code 스킬.
 
 에이전틱 코딩은 코드가 돌아가는 것과 내가 그것을 이해하는 것을 분리한다.
